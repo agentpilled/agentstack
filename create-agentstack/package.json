@@ -1,0 +1,44 @@
+{
+  "name": "create-agentstack",
+  "version": "0.1.0",
+  "description": "Scaffolder for new agentstack agency repos. Run via `pnpm create agentstack <target>`.",
+  "license": "MIT",
+  "author": "agentpilled",
+  "homepage": "https://github.com/agentpilled/agentstack",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agentpilled/agentstack.git",
+    "directory": "create-agentstack"
+  },
+  "type": "module",
+  "bin": {
+    "create-agentstack": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "template",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "pnpm build"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "picocolors": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  },
+  "keywords": [
+    "agentstack",
+    "scaffolder",
+    "create",
+    "ai-agents"
+  ]
+}

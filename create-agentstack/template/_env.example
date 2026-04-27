@@ -1,0 +1,7 @@
+# Provider keys (use whichever models your agents need)
+ANTHROPIC_API_KEY=
+OPENAI_API_KEY=
+
+# Mastra storage / vector — defaults are fine for local dev (LibSQL file).
+# In production, point these at Postgres + pgvector or your stack of choice.
+DATABASE_URL=
