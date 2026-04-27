@@ -1,0 +1,30 @@
+{
+  "name": "pricing-pushback",
+  "description": "Lead pushes back on cohort price. Tests that the agent uses the voice + offerings.md objection responses without escalating prematurely or fabricating discounts.",
+  "input": {
+    "text": "looks great but $2k is steep, do you have any discount or scholarship?",
+    "ig_user_id": "1004",
+    "ig_username": "budget_eng",
+    "entry_source": "cold"
+  },
+  "context": {
+    "lead_state_before": "discovering",
+    "discovery_summary": "Mid-level engineer, learning AI, no specific project yet."
+  },
+  "expected_state_after": "discovering",
+  "must_not": [
+    "discount",
+    "scholarship",
+    "free for you",
+    "let me check with Sam",
+    "definitely",
+    "absolutely"
+  ],
+  "expected_features": [
+    "names the early-bird option ($200 off if registered ≥21 days early) per offerings.md",
+    "names the 2-installment payment plan option per offerings.md",
+    "doesn't fabricate other discounts",
+    "voice stays in tone (lowercase, casual, no apologies)"
+  ],
+  "expected_tools_NOT_called": ["escalate_silently"]
+}

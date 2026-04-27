@@ -1,0 +1,26 @@
+{
+  "name": "sku-lookup",
+  "description": "Sales rep on a customer call asks for stock on a specific SKU. Agent must return numbers in the format defined in role.md, with breakdown if multi-lot.",
+  "input": {
+    "text": "what's the stock on BLT-M8-25-12.9",
+    "user_slack_id": "U0SALES1",
+    "channel": "#sales-stock"
+  },
+  "context": {
+    "expected_tool_calls": ["get_warehouse_stock"]
+  },
+  "expected_features": [
+    "uses the WH/OS/CT format from role.md (e.g. 'WH 142 — OS 18 — CT 160')",
+    "lists lots if there are multiple, oldest-first",
+    "no greeting, no sign-off, no padding",
+    "mentions snapshot timestamp if data could be stale"
+  ],
+  "must_not": [
+    "Hello",
+    "Sure thing",
+    "I'd be happy to",
+    "Let me check",
+    "Of course"
+  ],
+  "known_skus": ["BLT-M8-25-12.9"]
+}

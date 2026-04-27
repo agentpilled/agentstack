@@ -1,0 +1,24 @@
+{
+  "name": "open-shipments-customer",
+  "description": "User queries by customer alias ('NPF'). Agent must normalize via glossary.md before tool call and surface the alias-to-canonical mapping in the reply.",
+  "input": {
+    "text": "anything open for NPF this week",
+    "user_slack_id": "U0OPS1",
+    "channel": "#ops-stock"
+  },
+  "context": {
+    "expected_tool_calls": ["list_open_shipments"]
+  },
+  "expected_features": [
+    "normalizes 'NPF' to 'North Pacific Fleet' from shared/rag/glossary.md",
+    "mentions the alias normalization in the reply (e.g. 'normalized from NPF')",
+    "lists shipments with shipment ID + SKU count + unit count + planned ship date + status",
+    "no fabrication of shipment IDs"
+  ],
+  "must_not": [
+    "Hello",
+    "I'd be happy to",
+    "Sure"
+  ],
+  "known_shipments": ["SHP-8821", "SHP-8847"]
+}

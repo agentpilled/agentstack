@@ -25,6 +25,9 @@ All notable changes to agentstack are documented here. Format: [Keep a Changelog
   - `qa` — golden-input replay + iterative atomic fixes
   - `learn` — post-build pattern extraction (N≥2 only)
   - `ship-agent` — gated PR pipeline with lens reports in description
+- Two canonical examples in `examples/`:
+  - `acme-creators/` — B2C creator on Instagram with an IG setter agent. Demonstrates Iron Laws 1, 5, 6, 7, 8; per-company memory; Manychat + Calendly + Notion + Telegram stack. Includes 4 voice samples, 4 golden inputs, 2 custom scorers (`no_impersonation`, `tone_matches_acme`).
+  - `stark-distributors/` — B2B distributor with an internal stock-assistant agent. Demonstrates the boring-disclosure case, read-only tool baseline (no `requireApproval`), no voice scorer (no brand voice to match). Includes 2 golden inputs and a `no_fabrication` custom scorer (Iron Law 4).
 
 ### Iron Law Overrides
 None.

@@ -1,0 +1,28 @@
+{
+  "name": "cold-cohort-q",
+  "description": "Cold inbound asking about the cohort. Agent should give the date succinctly and ask exactly one discovery question.",
+  "input": {
+    "text": "hey saw your post about the cohort, when's the next one?",
+    "ig_user_id": "1001",
+    "ig_username": "dev_curious",
+    "entry_source": "comment_to_dm",
+    "post_id": "cohort-launch-q3"
+  },
+  "context": {
+    "lead_state_before": "cold"
+  },
+  "expected_state_after": "discovering",
+  "must_not": [
+    "Hello",
+    "Hi there",
+    "I hope you're doing well",
+    "definitely",
+    "absolutely"
+  ],
+  "expected_features": [
+    "mentions the next cohort start date or timeframe",
+    "ends with one open discovery question",
+    "uses lowercase by default",
+    "1–3 sentences total"
+  ]
+}

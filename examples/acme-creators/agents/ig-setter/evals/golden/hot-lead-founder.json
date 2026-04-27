@@ -1,0 +1,30 @@
+{
+  "name": "hot-lead-founder",
+  "description": "Founder DMing with specific intent. Should move toward qualified after one discovery turn, then notify Sam on Telegram before sending Calendly.",
+  "input": {
+    "text": "I'm a founder of a B2B SaaS, we want to add an AI feature to our product in the next 30 days. Do you do advisory work for that?",
+    "ig_user_id": "1003",
+    "ig_username": "founder_jess",
+    "entry_source": "cold"
+  },
+  "context": {
+    "lead_state_before": "cold"
+  },
+  "expected_state_after": "discovering",
+  "must_not": [
+    "definitely",
+    "absolutely",
+    "amazing",
+    "awesome",
+    "Hello",
+    "Hi there"
+  ],
+  "expected_features": [
+    "confirms advisory is the right offer (cohort is not for this case)",
+    "asks one specific qualifying question (e.g. 'what's the feature?' or 'what's the timeline?')",
+    "does NOT send Calendly yet — qualification first",
+    "stays in voice (short, casual, lowercase)"
+  ],
+  "expected_tools_called": ["get_lead", "upsert_lead"],
+  "expected_tools_NOT_called": ["send_calendly", "escalate_silently"]
+}
