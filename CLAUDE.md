@@ -10,7 +10,7 @@ You are in the **agentstack source repo**. Public, MIT, anonymous (`agentpilled`
 
 ## Hard rules for this repo
 
-1. **No real client names anywhere.** Never reference `artrotek`, `soymaticarrera`, `Mati Carrera`, `Luca`, or any other real entity from agentpilled's private agency work. Demo content uses the canonical examples only: `acme-creators`, `stark-distributors`.
+1. **No real client names anywhere.** Never reference real client slugs, real client names, or the maintainer's personal identity in shipped files. Demo content uses the canonical examples only: `acme-creators`, `stark-distributors`. If you're tempted to add a real name as a "concrete example," stop — pick a fictional one.
 
 2. **No identity leak.** Git is configured to use `agentpilled@users.noreply.github.com`. Don't change it. Don't add a real name to `package.json` author, README, CONTRIBUTING, LICENSE, or anywhere else.
 
