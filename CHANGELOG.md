@@ -8,7 +8,16 @@ All notable changes to agentstack are documented here. Format: [Keep a Changelog
 - Foundation: `ETHOS.md`, `IRON-LAWS.md`, `DECISION-PRINCIPLES.md`
 - Four review lenses: `operator`, `lead-user`, `stakeholder`, `compliance`
 - Repository scaffolding: `LICENSE`, `VERSION`, `CHANGELOG`, `.gitignore`, `package.json`
-- Installer: `setup/install.sh`
+- Installer: `setup/install.sh`, `setup/uninstall.sh`
+- Eight skills (each as `<name>/SKILL.md`):
+  - `validate` — Iron Laws + conventions checker (mechanical + semantic)
+  - `new-company` — interview + scaffold a client workspace
+  - `new-agent` — interview + scaffold an agent for an existing company
+  - `plan-review` — four-lens review with selectable modes
+  - `autoplan` — end-to-end pipeline with auto-decisions (the killer)
+  - `qa` — golden-input replay + iterative atomic fixes
+  - `learn` — post-build pattern extraction (N≥2 only)
+  - `ship-agent` — gated PR pipeline with lens reports in description
 
 ### Iron Law Overrides
 None.
