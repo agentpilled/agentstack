@@ -1,0 +1,36 @@
+{
+  "name": "agentstack",
+  "version": "0.1.0",
+  "description": "The Rails for AI agencies. Multi-tenant by default.",
+  "license": "MIT",
+  "author": "agentpilled",
+  "homepage": "https://github.com/agentpilled/agentstack",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agentpilled/agentstack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/agentpilled/agentstack/issues"
+  },
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "install:skills": "bash setup/install.sh",
+    "uninstall:skills": "bash setup/uninstall.sh",
+    "test": "echo 'TODO: skill validation tests'",
+    "validate": "echo 'TODO: validate.js'"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "mastra",
+    "multi-tenant",
+    "agency",
+    "claude",
+    "anthropic",
+    "workflow"
+  ]
+}

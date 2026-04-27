@@ -1,0 +1,4 @@
+packages:
+  - "framework"
+  - "create-agentstack"
+  - "examples/*"
