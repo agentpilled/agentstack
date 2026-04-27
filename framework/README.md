@@ -54,7 +54,7 @@ import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { buildAgentConfig, companyMemory } from '@agentstack/framework'
 import { Agent } from '@mastra/core/agent'
-import { Memory } from '@mastra/core/memory'
+import { Memory } from '@mastra/memory'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 const ROLE = readFileSync(resolve(HERE, 'role.md'), 'utf-8')

@@ -8,7 +8,7 @@ import {
   companyThreadId,
 } from '@agentstack/framework'
 import { Agent } from '@mastra/core/agent'
-import { Memory } from '@mastra/core/memory'
+import { Memory } from '@mastra/memory'
 
 import { escalateSilently } from './tools/escalate-silently.js'
 import { getLead } from './tools/get-lead.js'

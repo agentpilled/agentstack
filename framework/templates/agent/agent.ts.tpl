@@ -8,18 +8,21 @@ import {
   companyThreadId,
 } from '@agentstack/framework'
 import { Agent } from '@mastra/core/agent'
-import { Memory } from '@mastra/core/memory'
+import { Memory } from '@mastra/memory'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 const ROLE = readFileSync(resolve(HERE, 'role.md'), 'utf-8')
 
+// Agent file lives at companies/<slug>/src/agents/<agent>/agent.ts.
+// Five levels up from HERE = agency root, where loadCompanyContext expects
+// to find companies/<slug>/CONTEXT.md.
 const config = await buildAgentConfig({
   company: '{{company}}',
   id: '{{agent}}',
   name: '{{company}} · {{agent}}',
   role: ROLE,
   model: 'anthropic/claude-sonnet-4-6',
-  baseDir: resolve(HERE, '../../..'),
+  baseDir: resolve(HERE, '../../../../..'),
 })
 
 // Wire your Mastra Memory backend here. v0.1: bring your own.

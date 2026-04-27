@@ -1,10 +1,8 @@
-import type { Memory } from '@mastra/core/memory'
-
-export interface CompanyMemoryOptions {
+export interface CompanyMemoryOptions<M> {
   /** Company slug — used to scope all threads and resources */
   company: string
   /** Mastra Memory instance to wrap */
-  memory: Memory
+  memory: M
 }
 
 /**
@@ -15,8 +13,11 @@ export interface CompanyMemoryOptions {
  *
  * Convention 5 enforced: every agent uses this, every thread/resource is
  * prefixed with the company slug.
+ *
+ * Generic over the Memory type so we don't pin to a specific Mastra release —
+ * pass whatever `Memory` instance your installed `@mastra/memory` exports.
  */
-export function companyMemory(opts: CompanyMemoryOptions): Memory {
+export function companyMemory<M>(opts: CompanyMemoryOptions<M>): M {
   if (!opts.company) throw new Error('companyMemory: company is required')
   if (!opts.memory) {
     throw new Error(
