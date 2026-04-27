@@ -28,6 +28,16 @@ All notable changes to agentstack are documented here. Format: [Keep a Changelog
 - Two canonical examples in `examples/`:
   - `acme-creators/` — B2C creator on Instagram with an IG setter agent. Demonstrates Iron Laws 1, 5, 6, 7, 8; per-company memory; Manychat + Calendly + Notion + Telegram stack. Includes 4 voice samples, 4 golden inputs, 2 custom scorers (`no_impersonation`, `tone_matches_acme`).
   - `stark-distributors/` — B2B distributor with an internal stock-assistant agent. Demonstrates the boring-disclosure case, read-only tool baseline (no `requireApproval`), no voice scorer (no brand voice to match). Includes 2 golden inputs and a `no_fabrication` custom scorer (Iron Law 4).
+- `create-agentstack@0.1.0` (in `create-agentstack/`):
+  - `pnpm create agentstack <target>` scaffolds a workspace-ready agency repo
+  - Template ships `package.json`, `pnpm-workspace.yaml`, `tsconfig.json`, `.env.example`, `.gitignore`, `README.md`, `CLAUDE.md`, empty `companies/`
+  - `--force` flag for non-empty targets
+- `docs/getting-started.md` — 10-minute walkthrough from zero to first agent.
+
+### Changed
+- `companyMemory` is now generic over the Memory type. Decouples from a specific Mastra release so the framework doesn't break when `@mastra/core` shifts subpath exports.
+- Agent template (`framework/templates/agent/agent.ts.tpl`) imports `Memory` from `@mastra/memory` (its current home in 0.20+) and uses `baseDir: '../../../../..'` — five levels up from `companies/<slug>/src/agents/<agent>/` reaches the agency root, where `loadCompanyContext` looks for `companies/<slug>/CONTEXT.md`.
+- `framework/README.md` example updated to import `Memory` from `@mastra/memory`.
 
 ### Iron Law Overrides
 None.
