@@ -1,0 +1,62 @@
+{
+  "name": "@agentstack/framework",
+  "version": "0.1.0",
+  "description": "Multi-tenant primitives for AI agents built with Mastra. The runtime piece of agentstack.",
+  "license": "MIT",
+  "author": "agentpilled",
+  "homepage": "https://github.com/agentpilled/agentstack",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agentpilled/agentstack.git",
+    "directory": "framework"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./scorers": {
+      "types": "./dist/scorers/index.d.ts",
+      "import": "./dist/scorers/index.js"
+    }
+  },
+  "bin": {
+    "agentstack": "./dist/cli/index.js"
+  },
+  "files": [
+    "dist",
+    "templates",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "pnpm build"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "peerDependencies": {
+    "@mastra/core": ">=0.1.0 <1.0.0"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "picocolors": "^1.0.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@mastra/core": ">=0.1.0 <1.0.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  },
+  "keywords": [
+    "agentstack",
+    "mastra",
+    "ai-agents",
+    "multi-tenant",
+    "agency"
+  ]
+}
