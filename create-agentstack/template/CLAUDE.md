@@ -4,7 +4,7 @@ You are working in an **agentstack agency repo**. Every client is a workspace un
 
 ## Five conventions (non-negotiable)
 
-1. **Read `companies/<slug>/CONTEXT.md` first** before doing anything for that client. Use `loadCompanyContext` from `@agentstack/framework`.
+1. **Read `companies/<slug>/CONTEXT.md` first** before doing anything for that client. Use `loadCompanyContext` from `agentstack-framework`.
 2. **Existing tools before new tools.** Before writing a tool, grep `companies/<slug>/src/shared/tools/` and `companies/<slug>/src/agents/*/tools/` for the same capability.
 3. **No cross-company imports.** `companies/foo` may never import from `companies/bar`. Shared utilities live at the agency root, not inside another company.
 4. **Compose, don't paste.** Use `buildAgentConfig({ company, role, … })` — it composes the company CONTEXT into the agent's system prompt. Never copy CONTEXT into role.md.

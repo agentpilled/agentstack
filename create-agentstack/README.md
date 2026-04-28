@@ -10,11 +10,11 @@ cd my-agency
 pnpm install
 ```
 
-That gives you a multi-tenant agency repo: workspace-ready, `@agentstack/framework` wired in, `companies/` empty and waiting for `/agentstack-new-company`.
+That gives you a multi-tenant agency repo: workspace-ready, `agentstack-framework` wired in, `companies/` empty and waiting for `/agentstack-new-company`.
 
 ## What's in the box
 
-- `package.json` — workspace root with `@agentstack/framework`, `@mastra/core`, `@mastra/memory`
+- `package.json` — workspace root with `agentstack-framework`, `@mastra/core`, `@mastra/memory`
 - `pnpm-workspace.yaml` — `packages: ["companies/*"]`
 - `tsconfig.json` — strict, ESM, NodeNext
 - `.env.example` — provider keys + database URL

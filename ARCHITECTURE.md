@@ -10,7 +10,7 @@ agentstack ships as **two npm packages and one git repository**:
 github.com/agentpilled/agentstack          ← skills + foundations + examples (this repo)
                                              clone + install.sh
 
-npm: @agentstack/framework                  ← runtime library
+npm: agentstack-framework                  ← runtime library
                                              user projects import this
 
 npm: create-agentstack                      ← scaffolder
@@ -54,7 +54,7 @@ agentstack/
 ├── ship-agent/SKILL.md                  # /agentstack-ship-agent
 │
 ├── # ─── runtime (npm-publishable) ─────────────────────────────
-├── framework/                           # @agentstack/framework
+├── framework/                           # agentstack-framework
 │   ├── package.json
 │   ├── README.md
 │   └── src/
@@ -89,7 +89,7 @@ When you run `pnpm create agentstack my-agency`, you get a repo following this s
 
 ```
 my-agency/
-├── package.json                         # depends on @agentstack/framework
+├── package.json                         # depends on agentstack-framework
 ├── pnpm-workspace.yaml                  # companies/* are workspaces
 ├── .env.example
 └── companies/

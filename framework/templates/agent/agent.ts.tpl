@@ -6,7 +6,7 @@ import {
   companyMemory,
   companyResourceId,
   companyThreadId,
-} from '@agentstack/framework'
+} from 'agentstack-framework'
 import { Agent } from '@mastra/core/agent'
 import { Memory } from '@mastra/memory'
 

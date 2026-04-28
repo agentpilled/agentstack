@@ -49,7 +49,7 @@ What you got:
 
 ```
 my-agency/
-├── package.json            # workspace root, lists @agentstack/framework
+├── package.json            # workspace root, lists agentstack-framework
 ├── pnpm-workspace.yaml     # packages: ["companies/*"]
 ├── tsconfig.json
 ├── .env / .env.example
@@ -94,7 +94,7 @@ Same pattern: interview, then scaffold:
 The generated `agent.ts` looks like this — note how `buildAgentConfig` composes the company `CONTEXT.md` into the prompt automatically:
 
 ```ts
-import { buildAgentConfig, companyMemory } from '@agentstack/framework'
+import { buildAgentConfig, companyMemory } from 'agentstack-framework'
 import { Agent } from '@mastra/core/agent'
 import { Memory } from '@mastra/memory'
 // ...
@@ -131,7 +131,7 @@ This runs the eight Iron Laws against your repo and flags anything that drifts: 
 
 ```ts
 import { setterAgent } from './companies/acme-creators/agents/setter/agent.js'
-import { companyThreadId, companyResourceId } from '@agentstack/framework'
+import { companyThreadId, companyResourceId } from 'agentstack-framework'
 
 const result = await setterAgent.generate('hey, do you have anything for engineers?', {
   threadId: companyThreadId('acme-creators', 'dm-12345'),

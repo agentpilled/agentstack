@@ -34,7 +34,7 @@ agentstack/
 ├── ARCHITECTURE.md, CONTRIBUTING.md, CLAUDE.md  # docs
 ├── lenses/                                      # 4 review personalities
 ├── <skill-name>/SKILL.md                        # each skill is a folder
-├── framework/                                   # @agentstack/framework (npm)
+├── framework/                                   # agentstack-framework (npm)
 ├── create-agentstack/                           # scaffolder (npm)
 ├── examples/                                    # canonical companies
 ├── bin/                                         # helper scripts

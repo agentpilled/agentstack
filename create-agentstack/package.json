@@ -1,6 +1,6 @@
 {
   "name": "create-agentstack",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Scaffolder for new agentstack agency repos. Run via `pnpm create agentstack <target>`.",
   "license": "MIT",
   "author": "agentpilled",

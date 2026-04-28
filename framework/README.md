@@ -1,4 +1,4 @@
-# @agentstack/framework
+# agentstack-framework
 
 Multi-tenant primitives for AI agents built with [Mastra](https://mastra.ai).
 
@@ -7,7 +7,7 @@ This is the **runtime** piece of [agentstack](https://github.com/agentpilled/age
 ## Install
 
 ```bash
-pnpm add @agentstack/framework @mastra/core
+pnpm add agentstack-framework @mastra/core
 ```
 
 You also need Node.js ≥ 22.13.
@@ -22,9 +22,9 @@ import {
   companyThreadId,         // build thread IDs scoped to a company
   companyResourceId,       // build resource IDs scoped to a company
   companyRagNamespace,     // build RAG vector namespaces scoped to a company
-} from '@agentstack/framework'
+} from 'agentstack-framework'
 
-import { piiLeak } from '@agentstack/framework/scorers'
+import { piiLeak } from 'agentstack-framework/scorers'
 ```
 
 And a CLI:
@@ -52,7 +52,7 @@ Convention 2 (existing tools) and Convention 3 (no cross-company imports) are re
 import { readFileSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { buildAgentConfig, companyMemory } from '@agentstack/framework'
+import { buildAgentConfig, companyMemory } from 'agentstack-framework'
 import { Agent } from '@mastra/core/agent'
 import { Memory } from '@mastra/memory'
 

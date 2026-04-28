@@ -1,5 +1,5 @@
 {
-  "name": "@agentstack/framework",
+  "name": "agentstack-framework",
   "version": "0.1.1",
   "description": "Multi-tenant primitives for AI agents built with Mastra. The runtime piece of agentstack.",
   "license": "MIT",

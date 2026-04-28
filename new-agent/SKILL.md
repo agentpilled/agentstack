@@ -156,7 +156,7 @@ For each new tool:
 
 Iron Law 2 minimum:
 - `answer_relevancy` (built-in, just import)
-- `pii_leak` (`@agentstack/framework/scorers/pii-leak`) if user-facing
+- `pii_leak` (`agentstack-framework/scorers/pii-leak`) if user-facing
 - 1 custom — pick the most violatable CONTEXT policy and write a scorer for it. Stub is fine; the actual implementation can wait but the scorer file exists.
 
 If voice is critical (personal-brand agents): also stub `tone_matches_<slug>` — but **do not ship it without ≥3 golden samples** (Iron Law 7). If samples not yet collected, leave a comment and a TODO.
