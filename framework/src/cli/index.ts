@@ -1,13 +1,22 @@
 #!/usr/bin/env node
+import { readFileSync } from 'node:fs'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { Command } from 'commander'
 import pc from 'picocolors'
 import { newAgent, newCompany } from './commands.js'
+
+const HERE = dirname(fileURLToPath(import.meta.url))
+// dist/cli/index.js → ../../package.json
+const PKG = JSON.parse(readFileSync(resolve(HERE, '../../package.json'), 'utf-8')) as {
+  version: string
+}
 
 const program = new Command()
 program
   .name('agentstack')
   .description('agentstack CLI — multi-tenant agent workflow')
-  .version('0.1.0')
+  .version(PKG.version)
 
 const newCmd = program.command('new').description('Scaffold a new company or agent')
 

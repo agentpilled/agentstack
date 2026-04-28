@@ -9,8 +9,9 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@agentstack/framework": "^0.1.0",
-    "@mastra/core": ">=0.1.0 <1.0.0",
+    "@agentstack/framework": "^0.1.1",
+    "@mastra/core": ">=0.20.0 <2.0.0",
+    "@mastra/memory": ">=0.1.0 <2.0.0",
     "hono": "^4.0.0",
     "zod": "^3.23.0"
   },
