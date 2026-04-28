@@ -154,12 +154,20 @@ For each new tool:
 
 ### Step 8 — Scorer stubs
 
-Iron Law 2 minimum:
-- `answer_relevancy` (built-in, just import)
-- `pii_leak` (`agentstack-framework/scorers/pii-leak`) if user-facing
-- 1 custom — pick the most violatable CONTEXT policy and write a scorer for it. Stub is fine; the actual implementation can wait but the scorer file exists.
+Iron Law 2 demands ≥3 scorers. Compose from built-ins + 1 custom per CONTEXT policy:
 
-If voice is critical (personal-brand agents): also stub `tone_matches_<slug>` — but **do not ship it without ≥3 golden samples** (Iron Law 7). If samples not yet collected, leave a comment and a TODO.
+**Built-ins** (all from `agentstack-framework/scorers`, no LLM judge required):
+
+| Scorer | Use when | Inputs |
+|---|---|---|
+| `answerRelevancy` | Always — catches empty/refusal/too-short responses | `output` |
+| `piiLeak` | User-facing agents (anything that talks to humans) | `output` |
+| `noFabrication` | RAG-driven agents, B2B lookup agents — anything where the agent cites IDs/SKUs/tickets | `context`, `output` |
+| `escalationHandled` | Knowledge-gap-prone agents — flags fabrication-by-confidence when context is sparse | `context`, `output` |
+
+**Custom scorers**: pick the most violatable CONTEXT policy and write a regex/heuristic scorer for it. Stub is fine; the file existing matters more than the implementation at this stage.
+
+**Voice scorers**: if voice is critical (personal-brand agents), stub `tone_matches_<slug>` — but **do not ship it without ≥3 golden samples** (Iron Law 7). If samples not yet collected, leave a comment and a TODO.
 
 ### Step 9 — Wire in main.ts
 

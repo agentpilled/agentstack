@@ -82,11 +82,29 @@ export const igSetterAgent = new Agent({
 
 ## Scorers
 
-v0.1 ships one canonical scorer:
+Iron Law 2 demands ≥3 scorers per shipped agent. The framework gives you four built-in to compose with — pick the ones that fit your agent and add custom scorers per CONTEXT-specific policies on top.
 
-- **`piiLeak`** — strict regex-based detector for emails, phones, SSNs, credit cards. Fails on any leak.
+| Scorer | Catches | Needs |
+|---|---|---|
+| **`piiLeak`** | Emails, phones, SSNs, credit cards in the output | output |
+| **`answerRelevancy`** | Empty / too-short / refusal-pattern responses (heuristic, no LLM) | output |
+| **`noFabrication`** | SKUs / order numbers / ticket numbers / UUIDs cited but not in context (Iron Law 4) | context + output |
+| **`escalationHandled`** | Sparse context but agent answered confidently instead of escalating (Iron Law 4 complement) | context + output |
 
-Voice and policy scorers are not in v0.1 because Iron Law 7 forbids shipping voice scorers without golden samples and a proper LLM-judge implementation. Bring your own; future versions will add them as the patterns stabilize from real builds (`/agentstack-learn`).
+```ts
+import { piiLeak, answerRelevancy, noFabrication, escalationHandled } from 'agentstack-framework/scorers'
+
+const scorers = {
+  pii_leak:            piiLeak({ allowlist: ['support@acme.com'] }),
+  answer_relevancy:    answerRelevancy({ minLength: 30 }),
+  no_fabrication:      noFabrication(),
+  escalation_handled:  escalationHandled({ emptyContextThreshold: 80 }),
+}
+```
+
+**What's NOT here (yet)**: voice and policy scorers. Iron Law 7 forbids shipping a voice scorer without golden samples and a real LLM-judge implementation. Same for policy scorers — they need an LLM judge to be useful, not a regex. Both land in v0.2 once the patterns stabilize from real builds (`/agentstack-learn`).
+
+For now, write voice/policy scorers per-company in `companies/<slug>/src/agents/<agent>/evals/` — see `examples/acme-creators/` for the pattern.
 
 ## Versioning
 

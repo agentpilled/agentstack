@@ -4,10 +4,28 @@ All notable changes to agentstack are documented here. Format: [Keep a Changelog
 
 ## [Unreleased]
 
+## [0.1.2] — 2026-04-28
+
+### Added — closes the Iron Law 2 gap
+- **Three new built-in scorers** in `agentstack-framework/scorers`. Iron Law 2 demands ≥3 scorers per shipped agent; previously the framework shipped only `piiLeak` and left the other two as user-invent. Now you compose:
+  - **`answerRelevancy`** — heuristic check that the output is substantive (non-empty, above a length threshold, not a stock refusal pattern in en/es). v0.1 is heuristic-only; semantic relevance scoring requires an LLM judge (deferred to v0.2).
+  - **`noFabrication`** — flags entity references (SKUs, year-prefixed order numbers, ticket numbers, UUIDs) cited in the output that don't appear in the provided context. Iron Law 4 enforcement at scoring time. Pure regex extraction + substring check, no LLM.
+  - **`escalationHandled`** — when context is sparse (below a threshold), the output must explicitly escalate (en/es patterns) instead of improvising. Catches fabrication-by-confidence as a complement to `noFabrication`'s fabrication-by-specifics.
+- All four scorers documented in `framework/README.md` with a "use when" table.
+- `new-agent/SKILL.md` Step 8 rewritten to compose from the four built-ins plus one custom-per-CONTEXT-policy.
+- `vitest` added as devDependency. 22 sanity tests covering all four scorers — pass/fail cases, allowlists, custom thresholds. `pnpm test` runs them; `prepublishOnly` gates publish on green tests.
+
 ### Changed
-- Examples now use the same layout the CLI scaffolds: `examples/<slug>/src/agents/<agent>/` and `examples/<slug>/src/shared/`. Previously they sat at `examples/<slug>/agents/...` and `examples/<slug>/shared/...`, which meant copying an example into a real agency repo broke `loadCompanyContext` because the agent's `baseDir` resolved one level off. Both example agent files now use `baseDir: '../../../../..'` (matching the CLI template). Verified: `cp -R examples/<slug>/src/. companies/<slug>/src/` produces a tree where `loadCompanyContext` resolves correctly.
-- `docs/getting-started.md` agent paths updated to `companies/<slug>/src/agents/<agent>/` to match the CLI.
+- Examples now use the same layout the CLI scaffolds: `examples/<slug>/src/agents/<agent>/` and `examples/<slug>/src/shared/`. Previously they sat at `examples/<slug>/agents/...` and `examples/<slug>/shared/...`, which meant copying an example into a real agency repo broke `loadCompanyContext` because the agent's `baseDir` resolved one level off. Both example agent files now use `baseDir: '../../../../..'` (matching the CLI template).
+- `docs/getting-started.md` agent paths updated to `companies/<slug>/src/agents/<agent>/`.
 - `create-agentstack/template/README.md` convention 2 updated to reference `src/shared/tools/` and `src/agents/*/tools/`.
+- `README.md` adds an explicit "**Next:** follow the [getting-started walkthrough](docs/getting-started.md)" pointer after the install verification step.
+- New `examples/README.md` with side-by-side comparison table of the two canonical examples — clarifies which to start from and what each demonstrates.
+
+### Iron Law Overrides
+None.
+
+---
 
 ## [0.1.1] — 2026-04-28
 

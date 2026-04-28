@@ -1,6 +1,6 @@
 {
   "name": "agentstack-framework",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Multi-tenant primitives for AI agents built with Mastra. The runtime piece of agentstack.",
   "license": "MIT",
   "author": "agentpilled",
@@ -34,7 +34,9 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "prepublishOnly": "pnpm build"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "pnpm build && pnpm test"
   },
   "engines": {
     "node": ">=22.13"
@@ -50,7 +52,8 @@
   "devDependencies": {
     "@mastra/core": ">=0.20.0 <2.0.0",
     "@types/node": "^22.0.0",
-    "typescript": "^5.6.0"
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
   },
   "keywords": [
     "agentstack",
