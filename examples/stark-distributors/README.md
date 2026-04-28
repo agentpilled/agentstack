@@ -10,8 +10,7 @@ To use:
 # In your agency repo:
 cp -R examples/stark-distributors/CONTEXT.md       companies/<your-slug>/CONTEXT.md
 cp -R examples/stark-distributors/INTEGRATIONS.md  companies/<your-slug>/INTEGRATIONS.md
-cp -R examples/stark-distributors/shared           companies/<your-slug>/src/shared
-cp -R examples/stark-distributors/agents           companies/<your-slug>/src/agents
+cp -R examples/stark-distributors/src/.            companies/<your-slug>/src/
 ```
 
 ## What this demonstrates

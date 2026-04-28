@@ -6,10 +6,9 @@ This example is reference content, not a runnable agency. To use it, copy the fi
 
 ```bash
 # In your agency repo:
-cp -R examples/acme-creators/CONTEXT.md   companies/<your-slug>/CONTEXT.md
+cp -R examples/acme-creators/CONTEXT.md      companies/<your-slug>/CONTEXT.md
 cp -R examples/acme-creators/INTEGRATIONS.md companies/<your-slug>/INTEGRATIONS.md
-cp -R examples/acme-creators/shared       companies/<your-slug>/src/shared
-cp -R examples/acme-creators/agents       companies/<your-slug>/src/agents
+cp -R examples/acme-creators/src/.            companies/<your-slug>/src/
 ```
 
 Then rename `acme-creators` → `<your-slug>` in `agent.ts`, fill `voice-samples.md` with **your client's actual writing**, and replace tool TODOs with real Manychat / Calendly / Notion / Telegram credentials.

@@ -44,7 +44,7 @@ companies/
 agentstack codifies five conventions you don't get to skip:
 
 1. **Read CONTEXT.md first** (`loadCompanyContext`)
-2. **Existing tools before new tools** — search `companies/<slug>/agents/*/tools/` first
+2. **Existing tools before new tools** — search `companies/<slug>/src/shared/tools/` and `companies/<slug>/src/agents/*/tools/` first
 3. **No cross-company imports** — `companies/foo` cannot import from `companies/bar`
 4. **Compose, don't paste** — `buildAgentConfig` composes CONTEXT into the prompt
 5. **Memory + RAG scoped per company** — `companyMemory`, `companyThreadId`, `companyResourceId`, `companyRagNamespace`

@@ -4,6 +4,11 @@ All notable changes to agentstack are documented here. Format: [Keep a Changelog
 
 ## [Unreleased]
 
+### Changed
+- Examples now use the same layout the CLI scaffolds: `examples/<slug>/src/agents/<agent>/` and `examples/<slug>/src/shared/`. Previously they sat at `examples/<slug>/agents/...` and `examples/<slug>/shared/...`, which meant copying an example into a real agency repo broke `loadCompanyContext` because the agent's `baseDir` resolved one level off. Both example agent files now use `baseDir: '../../../../..'` (matching the CLI template). Verified: `cp -R examples/<slug>/src/. companies/<slug>/src/` produces a tree where `loadCompanyContext` resolves correctly.
+- `docs/getting-started.md` agent paths updated to `companies/<slug>/src/agents/<agent>/` to match the CLI.
+- `create-agentstack/template/README.md` convention 2 updated to reference `src/shared/tools/` and `src/agents/*/tools/`.
+
 ## [0.1.1] — 2026-04-28
 
 ### Added

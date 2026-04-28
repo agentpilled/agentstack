@@ -87,9 +87,9 @@ cp -r ~/agentstack/examples/acme-creators companies/
 
 Same pattern: interview, then scaffold:
 
-- `companies/acme-creators/agents/setter/role.md` — what this specific agent does
-- `companies/acme-creators/agents/setter/agent.ts` — Mastra `Agent` wired with `buildAgentConfig` + `companyMemory`
-- `companies/acme-creators/agents/setter/tools/` — placeholder tools
+- `companies/acme-creators/src/agents/setter/role.md` — what this specific agent does
+- `companies/acme-creators/src/agents/setter/agent.ts` — Mastra `Agent` wired with `buildAgentConfig` + `companyMemory`
+- `companies/acme-creators/src/agents/setter/tools/` — placeholder tools
 
 The generated `agent.ts` looks like this — note how `buildAgentConfig` composes the company `CONTEXT.md` into the prompt automatically:
 
@@ -130,7 +130,7 @@ This runs the eight Iron Laws against your repo and flags anything that drifts: 
 `pnpm build` to compile, then wire `setterAgent` into your existing Mastra runtime — webhook, CLI, queue worker, whatever. Quick smoke test:
 
 ```ts
-import { setterAgent } from './companies/acme-creators/agents/setter/agent.js'
+import { setterAgent } from './companies/acme-creators/src/agents/setter/agent.js'
 import { companyThreadId, companyResourceId } from 'agentstack-framework'
 
 const result = await setterAgent.generate('hey, do you have anything for engineers?', {
