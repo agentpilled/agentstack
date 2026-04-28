@@ -143,7 +143,11 @@ Sections (ARCHITECTURE.md format):
 
 Keep `role.md` ≤ 500 words (Iron Law 5 sibling — long roles do too much).
 
-### Step 7 — Tool stubs
+### Step 7 — Pick the dispatch pattern
+
+Before tools, decide: does the LLM call tools directly, or does it classify and let your runner dispatch deterministically? The two patterns produce different bug classes — pick deliberately. Read [`docs/patterns/structured-dispatch.md`](../../docs/patterns/structured-dispatch.md). Default to LLM-tool-calling (Pattern A) unless misclassification → wrong-tool-call would be a P0 bug, in which case use structured output + deterministic dispatch (Pattern B).
+
+### Step 7b — Tool stubs (Pattern A only)
 
 For each new tool:
 - Create file under `agents/<name>/tools/<tool>.ts` (agent-specific) or `shared/tools/<tool>.ts` (Decision Principle 2: ≥2 agents)

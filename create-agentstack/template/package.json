@@ -12,7 +12,7 @@
     "agentstack": "agentstack"
   },
   "dependencies": {
-    "agentstack-framework": "^0.1.0",
+    "agentstack-framework": "^0.1.3",
     "@mastra/core": ">=0.1.0 <2.0.0",
     "@mastra/memory": ">=0.1.0 <2.0.0"
   },

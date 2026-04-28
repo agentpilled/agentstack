@@ -4,6 +4,39 @@ All notable changes to agentstack are documented here. Format: [Keep a Changelog
 
 ## [Unreleased]
 
+## [0.1.4] — 2026-04-28
+
+### Background — gaps surfaced from a real build
+
+This release closes four gaps surfaced by reviewing a real agentstack build (an email triager for a B2B SaaS company on top of Gmail). Each fix below is N=1 evidence, not speculation. The `/agentstack-learn` workflow against ourselves.
+
+### Added — `references` option in `buildAgentConfig`
+- **`agentstack-framework@0.1.3`** published.
+- New `references?: AgentReference[]` option on `buildAgentConfig`. Each reference is `{ label, path }` (path resolved relative to `companies/<company>/`) or `{ label, content }` (pre-loaded string). References are spliced into the system prompt below CONTEXT + role + cross-cutting rules, each as a `# Reference — <label>` section separated by `---`.
+- Eliminates ~28 lines of manual `readFileSync` + string-interpolation boilerplate per agent that needs reference docs (taxonomies, voice samples, product specs, glossaries).
+- Real-world before: agent.ts inlined `readFileSync` + array-join across 3 RAG files. Real-world after: `references: [{ label, path }, ...]` in the `buildAgentConfig` call.
+- 10 new vitest tests for `buildAgentConfig` covering both shapes, error cases (both/neither set, missing path), and ordering.
+
+### Changed — `model` is optional in `BuildAgentConfigOptions`
+- Real-world finding: callers commonly pass a real provider object (e.g. `openai('gpt-4o-mini')`) directly to `new Agent({...config, model: provider})`. The `model: string` we required at config-build time was a placeholder. Now optional. The Agent's own `model` prop is the source of truth.
+
+### Added — `scripts/` in the agency template
+- **`create-agentstack@0.1.2`** published.
+- Template now scaffolds an empty `scripts/.gitkeep` at the agency root. Documented in `CLAUDE.md` and `README.md` of the generated repo as the home for agency-level operational helpers: auth setup (`gmail-oauth.ts`), manual runners (`run-triage.ts`), one-off fixtures (`extract-voice-samples.ts`), QA teardown (`restore-inbox.ts`).
+- Template `agentstack-framework` peerDep widened to `^0.1.3` so freshly-scaffolded agencies pick up the new `references` API.
+- Template `.gitignore` adds `*.tgz` to keep generated tarballs out of repos.
+
+### Added — `docs/patterns/structured-dispatch.md`
+- New documented pattern: structured-output + deterministic dispatch (Pattern B) vs. LLM-tool-calls (Pattern A). Each one's failure modes, when each fits, and a hybrid composition.
+- Sourced from a real bug class: LLM classifies "read-only" but still calls an archive tool. Pattern B sidesteps the class entirely by removing tools from the agent and dispatching deterministically from a runner.
+- `new-agent/SKILL.md` Step 7 now points to this doc as the FIRST decision before drafting tool stubs.
+- Linked from main `README.md` under a new `## Patterns` section.
+
+### Iron Law Overrides
+None.
+
+---
+
 ## [0.1.3] — 2026-04-28
 
 ### Added — closes the install UX gap

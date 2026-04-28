@@ -1,6 +1,9 @@
 node_modules/
 .pnpm-store/
 
+# Generated tarballs and local refs
+*.tgz
+
 dist/
 build/
 *.tsbuildinfo

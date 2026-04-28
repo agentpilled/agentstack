@@ -36,7 +36,8 @@ companies/
         tools/            # tools reused across agents of this company
         prompts/          # prompt fragments
         schemas/          # zod schemas
-        rag/              # source docs for RAG ingestion
+        rag/              # MD docs inherited via buildAgentConfig({ references })
+scripts/                  # agency-level operational helpers (auth, runners, fixtures, teardown)
 ```
 
 ## Conventions

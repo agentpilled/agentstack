@@ -22,6 +22,30 @@ You probably want these (from the agentstack skill set — see <https://github.c
 - `/agentstack-qa <company>/<agent>` — replay golden inputs and score
 - `/agentstack-ship-agent <company>/<agent>` — validate → review → register → tests → PR
 
+## Where things live
+
+```
+mi-agencia/
+├── companies/<slug>/        # one dir per client (everything client-specific)
+│   ├── CONTEXT.md
+│   ├── INTEGRATIONS.md
+│   └── src/
+│       ├── agents/
+│       └── shared/
+│           ├── tools/       # reused across this client's agents
+│           ├── prompts/
+│           ├── schemas/
+│           └── rag/         # MD docs the agents inherit via buildAgentConfig({ references })
+└── scripts/                 # agency-level operational helpers (not client-specific)
+    # Examples of what lives here:
+    #   - auth setup        (gmail-oauth.ts, slack-install.ts)
+    #   - manual runners    (run-triager.ts, replay-thread.ts)
+    #   - one-off fixtures  (extract-voice-samples.ts, seed-rag.ts)
+    #   - QA teardown       (restore-inbox.ts, reset-state.ts)
+```
+
+`scripts/` is the agency-level home for anything that isn't a client deliverable but supports the operation: auth, runners, fixtures, teardown. If you find yourself writing something that doesn't fit `companies/<slug>/`, it probably belongs here.
+
 ## When in doubt
 
 Read the company's `CONTEXT.md`. The voice, policies, and constraints live there — not in your head.

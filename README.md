@@ -97,6 +97,12 @@ Read in this order:
 5. **`SKILL.md`** — the six conventions every agentstack repo follows
 6. **`ARCHITECTURE.md`** — repo shape, the agent journey, package model
 
+## Patterns
+
+Field-extracted patterns (one bullet, no speculation):
+
+- [`docs/patterns/structured-dispatch.md`](docs/patterns/structured-dispatch.md) — when to let the LLM call tools vs. when to make it classify only and dispatch deterministically.
+
 ---
 
 ## Examples

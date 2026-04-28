@@ -16,7 +16,7 @@ You also need Node.js ≥ 22.13.
 
 ```ts
 import {
-  buildAgentConfig,        // compose CONTEXT.md + role.md into an agent system prompt
+  buildAgentConfig,        // compose CONTEXT.md + role.md (+ optional references) into a system prompt
   loadCompanyContext,      // read companies/<slug>/CONTEXT.md from disk
   companyMemory,           // wrap a Mastra Memory in per-company scoping
   companyThreadId,         // build thread IDs scoped to a company
@@ -24,8 +24,27 @@ import {
   companyRagNamespace,     // build RAG vector namespaces scoped to a company
 } from 'agentstack-framework'
 
-import { piiLeak } from 'agentstack-framework/scorers'
+import { piiLeak, answerRelevancy, noFabrication, escalationHandled } from 'agentstack-framework/scorers'
 ```
+
+### `buildAgentConfig` with reference docs
+
+When the agent needs to know taxonomies, voice samples, product specs, or glossaries that don't belong in `CONTEXT.md`, pass them as `references`. They're spliced into the system prompt below CONTEXT + role:
+
+```ts
+const config = await buildAgentConfig({
+  company: 'acme-creators',
+  id: 'ig-setter',
+  name: 'acme-creators · IG Setter',
+  role: ROLE,
+  references: [
+    { label: 'Voice samples',           path: 'src/shared/rag/voice-samples.md' },
+    { label: 'Classification criteria', path: 'src/shared/rag/criteria.md' },
+  ],
+})
+```
+
+`path` is resolved relative to `companies/<company>/`. Pass `content` instead if you've already loaded the string. `model` is optional — pass it here OR pass a real provider object directly to `new Agent({...config, model: openai('...')})`. Whichever you set last on the Agent wins.
 
 And a CLI:
 

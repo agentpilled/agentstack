@@ -1,6 +1,6 @@
 {
   "name": "agentstack-framework",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Multi-tenant primitives for AI agents built with Mastra. The runtime piece of agentstack.",
   "license": "MIT",
   "author": "agentpilled",
