@@ -4,6 +4,26 @@ All notable changes to agentstack are documented here. Format: [Keep a Changelog
 
 ## [Unreleased]
 
+## [0.1.3] — 2026-04-28
+
+### Added — closes the install UX gap
+- **`agentstack-skills@0.1.0`** published. One-line installer: `npx agentstack-skills` fetches the latest released tag of `agentpilled/agentstack` from GitHub, extracts it to a temp dir, and copies all 9 skills (root dispatcher + 8 slash commands) into `~/.claude/skills/agentstack*`. Replaces the previous `git clone + bash setup/install.sh` flow as the primary onboarding path.
+  - Default: pulls the latest GitHub release tag (stable).
+  - `--ref <tag|branch>` to pin or live on `main`.
+  - `--skills-dir <path>` to redirect away from `~/.claude/skills`.
+  - `--dry-run` to preview what would happen.
+  - `uninstall` subcommand to remove all `agentstack*` skills.
+  - Zero npm dependencies beyond `picocolors`. Uses `curl` + `tar` (universal on macOS/Linux) under the hood.
+- README install section rewritten to lead with `npx agentstack-skills`. The clone+bash flow is preserved as a `<details>` fallback for contributors developing on agentstack itself.
+
+### Changed
+- `pnpm-workspace.yaml` adds `install` to the workspace.
+
+### Iron Law Overrides
+None.
+
+---
+
 ## [0.1.2] — 2026-04-28
 
 ### Added — closes the Iron Law 2 gap

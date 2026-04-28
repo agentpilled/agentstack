@@ -41,14 +41,25 @@ $ claude
 
 ## Install — 30 seconds
 
-Requirements: [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Git, Node.js 22.13+.
+Requirements: [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Node.js 22.13+.
+
+```bash
+npx agentstack-skills
+```
+
+That fetches the latest released tag of this repo from GitHub and copies the eight skills + root dispatcher to `~/.claude/skills/agentstack-*`. Restart Claude Code or open a new project.
+
+To pin to a specific version, install from `main`, or uninstall — see the [`agentstack-skills` readme](https://www.npmjs.com/package/agentstack-skills).
+
+<details>
+<summary>Alternative: install from a local clone (for contributing to agentstack itself)</summary>
 
 ```bash
 git clone https://github.com/agentpilled/agentstack.git ~/agentstack
 cd ~/agentstack && bash setup/install.sh
 ```
 
-That copies eight skills to `~/.claude/skills/agentstack-*`. Restart Claude Code or open a new project.
+</details>
 
 Verify:
 

@@ -1,0 +1,43 @@
+{
+  "name": "agentstack-skills",
+  "version": "0.1.0",
+  "description": "One-line installer for the agentstack Claude Code skills. Run `npx agentstack-skills` to install all eight slash commands plus the root dispatcher to ~/.claude/skills/.",
+  "license": "MIT",
+  "author": "agentpilled",
+  "homepage": "https://github.com/agentpilled/agentstack",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agentpilled/agentstack.git",
+    "directory": "install"
+  },
+  "type": "module",
+  "bin": {
+    "agentstack-skills": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "pnpm build"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "dependencies": {
+    "picocolors": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  },
+  "keywords": [
+    "agentstack",
+    "claude-code",
+    "skills",
+    "installer",
+    "ai-agents"
+  ]
+}
