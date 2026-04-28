@@ -1,6 +1,6 @@
 {
   "name": "@agentstack/framework",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Multi-tenant primitives for AI agents built with Mastra. The runtime piece of agentstack.",
   "license": "MIT",
   "author": "agentpilled",
@@ -40,7 +40,7 @@
     "node": ">=22.13"
   },
   "peerDependencies": {
-    "@mastra/core": ">=0.1.0 <1.0.0"
+    "@mastra/core": ">=0.20.0 <2.0.0"
   },
   "dependencies": {
     "commander": "^12.0.0",
@@ -48,7 +48,7 @@
     "zod": "^3.23.0"
   },
   "devDependencies": {
-    "@mastra/core": ">=0.1.0 <1.0.0",
+    "@mastra/core": ">=0.20.0 <2.0.0",
     "@types/node": "^22.0.0",
     "typescript": "^5.6.0"
   },
