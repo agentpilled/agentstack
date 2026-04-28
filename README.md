@@ -56,6 +56,8 @@ Verify:
 > /agentstack-validate
 ```
 
+**Next:** follow the [getting-started walkthrough](docs/getting-started.md) — 6 steps, ~10 minutes, from a fresh clone to your first running agent.
+
 ---
 
 ## Skills
