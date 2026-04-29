@@ -81,6 +81,7 @@ Verify:
 | `/agentstack-plan-review` | Four-lens review of an agent spec |
 | `/agentstack-autoplan` | The killer. Spec → 4 reviews → scaffold → drafts. Auto-decides via 6 principles |
 | `/agentstack-qa` | Replay golden inputs, score, fix iteratively |
+| `/agentstack-schedule` | Put a runner on a recurring schedule (launchd / systemd) with .env loading + locking + window of operation |
 | `/agentstack-learn` | Extract patterns post-build, propose updates to SKILL/IRON-LAWS |
 | `/agentstack-ship-agent` | Validate → review → register → tests → PR |
 

@@ -4,6 +4,29 @@ All notable changes to agentstack are documented here. Format: [Keep a Changelog
 
 ## [Unreleased]
 
+## [0.1.5] — 2026-04-29
+
+### Added — `/agentstack-schedule` skill
+- New skill at `schedule/SKILL.md`. Puts an agentstack runner script on a recurring schedule using the OS's native job scheduler — `launchd` on macOS, `systemd` user timers on Linux. Activated by `/agentstack-schedule` from inside an agency repo.
+- Generates four pieces:
+  - **Wrapper script** (`scripts/_<name>-wrapper.sh`) that handles the four things schedulers can't: cd to agency root, source `.env`, gate by window of operation (e.g. `09-21h`), hold a `flock` against overlapping runs.
+  - **Platform config** — `~/Library/LaunchAgents/agentstack.<slug>.<name>.plist` (macOS) or `~/.config/systemd/user/<name>.{service,timer}` (Linux).
+  - **Helper scripts** — `scripts/<name>-{pause,resume,logs,uninstall}.sh`. Each is platform-aware (one script, runs on macOS or Linux).
+  - **Logs** — `~/Library/Logs/agentstack.<slug>.<name>.log` (macOS) or `~/.local/state/agentstack/...` (Linux). XDG-compliant on Linux.
+- Supported cadences: `every Nm`, `every Nh`, `hourly`, `daily HH:MM`. The skill explicitly does NOT accept arbitrary cron expressions because launchd has no equivalent — half the cron expressions don't translate cleanly, and silent partial-translations hide bugs. Users wanting cron syntax edit the generated config by hand.
+- Supports macOS `WakeFromSleep` (with explicit warning that it requires AC power + System Settings opt-in).
+- Step 7 of the procedure runs a one-shot verification immediately after activation — catches `.env` issues, PATH issues, missing deps at install time instead of three days later.
+- All 4 helper script templates + the wrapper template + macos.plist template + linux service/timer templates lint clean (`bash -n`, `plutil -lint`, systemd section structure).
+- Distributed via the existing `agentstack-skills` installer — no new npm package, no framework code change. After this release, `npx agentstack-skills` discovers `agentstack-schedule` automatically.
+
+### Why a skill, not a framework primitive
+Documented in `schedule/README.md`. Short version: scheduling has too many design dimensions (cron vs interval vs calendar, env loading, locking, log rotation, wake-from-sleep, platform differences) to commit to a primitive after seeing only one real build (mati-clase email triager). Once N≥2 real scheduled runners exist, the framework graduates `defineRunner({ ..., schedule: ... })` and the skill reads that metadata instead of asking the user — that's a v0.2 milestone.
+
+### Iron Law Overrides
+None.
+
+---
+
 ## [0.1.4] — 2026-04-28
 
 ### Background — gaps surfaced from a real build
